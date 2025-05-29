@@ -37,3 +37,5 @@ models/
 
 # Environment variables
 .env 
+.vercel
+node_modules
