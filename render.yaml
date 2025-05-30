@@ -6,10 +6,12 @@ services:
     region: oregon
     branch: main
     rootDir: ./
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci && npm run build
     startCommand: npm start
     envVars:
       - key: NEXT_PUBLIC_API_URL
         value: https://immigration-lawyer-rag-backend.onrender.com
       - key: NODE_ENV
-        value: production 
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1" 
