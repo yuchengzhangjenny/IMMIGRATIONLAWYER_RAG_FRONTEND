@@ -4,7 +4,8 @@
 - ✅ Code pushed to GitHub: `https://github.com/yuchengzhangjenny/IMMIGRATIONLAWYER_RAG_FRONTEND.git`
 - ✅ Backend deployed: `https://immigration-lawyer-rag-backend.onrender.com`
 - ✅ Frontend builds successfully
-- ✅ Node.js version: `v23.9.0`
+- ✅ Node.js version: `22.12.0` (Render-compatible)
+- ✅ Node version fixed: Added `.nvmrc` and `engines` in package.json
 
 ## 🌐 **Deploy to Render - Exact Steps:**
 
@@ -26,6 +27,7 @@
 - **Region**: `Oregon (US West)` (recommended - same as backend)
 - **Branch**: `main`
 - **Runtime**: `Node`
+- **Root Directory**: Leave blank or set to `./` (NOT `src`)
 
 #### **Build & Deploy Settings:**
 - **Build Command**: 
@@ -38,7 +40,7 @@
   ```
 
 #### **Advanced Settings:**
-- **Node Version**: `23.9.0` (to match your local)
+- **Node Version**: `22.12.0` (automatically detected from .nvmrc file)
 - **Plan**: `Free` (or `Starter $7/month` for no sleeping)
 
 ### **Step 4: Environment Variables**
@@ -48,6 +50,8 @@ Click **"Advanced"** and add these environment variables:
 |---------|-----------|
 | `NEXT_PUBLIC_API_URL` | `https://immigration-lawyer-rag-backend.onrender.com` |
 | `NODE_ENV` | `production` |
+
+**Note**: You **don't need** to set `NODE_VERSION` manually - Render will automatically use `22.12.0` from your `.nvmrc` file!
 
 ### **Step 5: Deploy**
 1. Click **"Create Web Service"**
@@ -122,4 +126,18 @@ Save this URL - this is your live application!
 ## 🔗 **Your Deployment URLs:**
 - **Frontend**: `[Your Render URL will appear here]`
 - **Backend**: `https://immigration-lawyer-rag-backend.onrender.com`
-- **GitHub**: `https://github.com/yuchengzhangjenny/IMMIGRATIONLAWYER_RAG_FRONTEND.git` 
+- **GitHub**: `https://github.com/yuchengzhangjenny/IMMIGRATIONLAWYER_RAG_FRONTEND.git`
+
+## 🚨 **IMPORTANT: Fix Root Directory Issue**
+
+If you get the error: `Could not read package.json: Error: ENOENT: no such file or directory, open '/opt/render/project/src/package.json'`
+
+**This means Render is looking in the wrong directory. Fix it by:**
+
+1. **In Render Dashboard**: 
+   - Go to your service settings
+   - Find **"Root Directory"** setting
+   - Make sure it's set to `./` (root) or leave it blank
+   - **NOT** set to `src`
+
+2. **Or use our render.yaml file** (already configured correctly) 
